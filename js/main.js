@@ -7,22 +7,22 @@ const loginContent = document.querySelector('#login-content')
 const signup =document.querySelector('#signup')
 const signContent = document.querySelector('#sign-content')
 // const createbtn = document.querySelector('#sign-content')
-
+var contactBox,signupBox,loginBox,aboutBox; 
+const closeButton_con = document.getElementById('closebtn-con');
+const closeButton_log = document.getElementById('closebtn-log');
+const closeButton_sign = document.getElementById('closebtn-sign');
+// const closeButton = document.getElementById('closebtn');
 
 
 
 
 
 signup.addEventListener('click',()=> {
-  const signupBox = new WinBox({
+   signupBox = new WinBox({
     title: 'SignUP',
     modal: true,
     width: '600px',
     height: '800px',
-    // top: 75,
-    // right: 100,
-    // bottom: 75  ,
-    // left:100,
     mount: signContent,
     onfocus: function () {
       this.setBackground('#00aa00')
@@ -33,15 +33,11 @@ signup.addEventListener('click',()=> {
   })
 })
 login.addEventListener('click',()=> {
-  const loginBox = new WinBox({
+   loginBox = new WinBox({
     title: 'Login',
     modal: true,
     width: '400px',
     height: '400px',
-    // top: 75,
-    // right: 100,
-    // bottom: 75  ,
-    // left:100,
     mount: loginContent,
     onfocus: function () {
       this.setBackground('#00aa00')
@@ -53,15 +49,11 @@ login.addEventListener('click',()=> {
 })
 
 about.addEventListener('click', () => {
-  const aboutBox = new WinBox({
+   aboutBox = new WinBox({
     title: 'About Me',
   modal: true,
     width: '800',
     height: '400px',
-    // top: 50,
-    // right: 50,
-    // bottom: 50,
-    // left: 50,
     mount: aboutContent,
     onfocus: function () {
       this.setBackground('#00aa00')
@@ -73,15 +65,10 @@ about.addEventListener('click', () => {
 })
 
 contact.addEventListener('click', () => {
-  const contactBox = new WinBox({
+    contactBox = new WinBox({
     title: 'Contact Me',
     modal:true,
-    width: '660',
-    height: '444',
-    // top: 150,
-    // right: 50,
-    // bottom: 50,
-    // left: 250,
+    height: '600',
     mount: contactContent,
     onfocus: function () {
       this.setBackground('#00aa00')
@@ -91,3 +78,21 @@ contact.addEventListener('click', () => {
     },
   })
 })
+
+
+
+
+closeButton_con.addEventListener('click', () => {
+  contactBox.close();
+  
+});
+
+closeButton_log.addEventListener('click', () => {
+  loginBox.close();
+  
+});
+closeButton_sign.addEventListener('click', () => {
+  signupBox.close();
+  
+});
+
