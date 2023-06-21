@@ -123,3 +123,34 @@ closeButton_sign.addEventListener('click', () => {
   
 });
 
+// Define the text to be typed
+const text = ">akash@adarkar$";
+
+
+// Set the typing speed (typeSpeed) in milliseconds
+const typeSpeed = 100; // Adjust the value as per your desired speed
+
+// Get the text element
+const textElement = document.getElementById('name');
+
+// Function to simulate typing effect
+function typeWriter(text, index) {
+  if (index < text.length) {
+    textElement.textContent += text.charAt(index);
+    index++;
+    setTimeout(() => {
+      typeWriter(text, index);
+    }, typeSpeed);
+  } else {
+    // Wait for a delay before starting the loop again
+    setTimeout(() => {
+      textElement.textContent = '';
+      typeWriter(text, 0);
+    }, 2000); // Adjust the delay time (in milliseconds) as desired
+  }
+}
+
+// Call the typeWriter function to start the typing effect
+typeWriter(text, 0);
+
+
