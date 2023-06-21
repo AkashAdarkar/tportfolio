@@ -68,7 +68,17 @@ h3 {
 ul {
   list-style-type: none;
 }
+#lnks  a{
+ color:#ccc;
+ text-decoration:none;
+ text-align: center;
 
+}
+
+#lnks a:hover{
+  color: #008F11;
+  
+}
 a {
   color: var(--text-color);
   text-decoration: none;
@@ -183,11 +193,6 @@ button:hover{
   font-size: medium
 }
 
-a{
-  padding-top:30px;
-  text-decoration:none;
-  color:#ccc;
-}
 
 #gender{
   display: flex;

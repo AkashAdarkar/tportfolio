@@ -13,31 +13,58 @@ const closeButton_log = document.getElementById('closebtn-log');
 const closeButton_sign = document.getElementById('closebtn-sign');
 // const closeButton = document.getElementById('closebtn');
 
+// const openLink = document.getElementById('open-link');
 
 
 
 
-signup.addEventListener('click',()=> {
-   signupBox = new WinBox({
-    title: 'SignUP',
-    modal: true,
-    width: '600px',
-    height: '800px',
-    mount: signContent,
-    onfocus: function () {
-      this.setBackground('#00aa00')
-    },
-    onblur: function () {
-      this.setBackground('#777')
-    },
-  })
-})
+  // Create a new Winbox instance for the internal element
+  signup.addEventListener('click',()=> {
+    signupBox = new WinBox({
+     title: 'SignUP',
+     modal: true,
+     width: '600px',
+     height: '800px',
+     mount: signContent,
+     onfocus: function () {
+       this.setBackground('#00aa00')
+     },
+     onblur: function () {
+       this.setBackground('#777')
+     },
+    })
+    loginBox.close();
+
+ })
+
+
+
+
+// signup.addEventListener('click',()=> {
+//    signupBox = new WinBox({
+//     title: 'SignUP',
+//     modal: true,
+//     width: '600px',
+//     height: '800px',
+//     mount: signContent,
+//     onfocus: function () {
+//       this.setBackground('#00aa00')
+//     },
+//     onblur: function () {
+//       this.setBackground('#777')
+//     },
+//   })
+  
+// })
+
+
+
+
+
 login.addEventListener('click',()=> {
    loginBox = new WinBox({
     title: 'Login',
     modal: true,
-    width: '400px',
-    height: '400px',
     mount: loginContent,
     onfocus: function () {
       this.setBackground('#00aa00')
