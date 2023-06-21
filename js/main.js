@@ -76,19 +76,50 @@ login.addEventListener('click',()=> {
 })
 
 about.addEventListener('click', () => {
-   aboutBox = new WinBox({
-    title: 'About Me',
-  modal: true,
-    width: '800',
-    height: '400px',
-    mount: aboutContent,
-    onfocus: function () {
-      this.setBackground('#00aa00')
-    },
-    onblur: function () {
-      this.setBackground('#777')
-    },
-  })
+  const typewriterText = "I am an introvert!! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut beatae odit asperiores nemo nobis repellat provident deserunt eius deleniti distinctio ut blanditiis repellendus veniam eaque pariatur, hic ea fugit accusamus.";
+  const typewriterDelay = 50;
+  let typewriterIndex = 0;
+  let isTyping = true;
+  
+  function typeText() {
+    const typewriterElement = document.createElement('p');
+    typewriterElement.classList.add('typewriter');
+  
+    function type() {
+      if (typewriterIndex === typewriterText.length) {
+        isTyping = false;
+        return;
+      }
+  
+      typewriterElement.textContent += typewriterText.charAt(typewriterIndex);
+      typewriterIndex++;
+      setTimeout(type, typewriterDelay);
+    }
+  
+    type();
+  
+    new WinBox({
+      title: 'About',
+     
+      onblur: function () {
+        this.setBackground('#777')
+      },
+     modal:true,
+      x: 'center',
+      y: 'center',
+      mount: typewriterElement,
+      onfocus: function () {
+        this.setBackground('#00aa00')
+        if (!isTyping) {
+          typewriterElement.focus();
+        }
+      }
+    });
+  }
+  
+  typeText();
+  
+  
 })
 
 contact.addEventListener('click', () => {
@@ -152,5 +183,6 @@ function typeWriter(text, index) {
 
 // Call the typeWriter function to start the typing effect
 typeWriter(text, 0);
+
 
 
