@@ -76,50 +76,75 @@ login.addEventListener('click',()=> {
 })
 
 about.addEventListener('click', () => {
-  const typewriterText = "I am an introvert!! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut beatae odit asperiores nemo nobis repellat provident deserunt eius deleniti distinctio ut blanditiis repellendus veniam eaque pariatur, hic ea fugit accusamus.";
-  const typewriterDelay = 50;
-  let typewriterIndex = 0;
-  let isTyping = true;
-  
-  function typeText() {
-    const typewriterElement = document.createElement('p');
-    typewriterElement.classList.add('typewriter');
-  
-    function type() {
-      if (typewriterIndex === typewriterText.length) {
-        isTyping = false;
-        return;
-      }
-  
-      typewriterElement.textContent += typewriterText.charAt(typewriterIndex);
-      typewriterIndex++;
-      setTimeout(type, typewriterDelay);
-    }
-  
-    type();
-  
-    new WinBox({
-      title: 'About',
-     
-      onblur: function () {
-        this.setBackground('#777')
-      },
-     modal:true,
-      x: 'center',
-      y: 'center',
-      mount: typewriterElement,
-      onfocus: function () {
-        this.setBackground('#00aa00')
-        if (!isTyping) {
-          typewriterElement.focus();
+  const imageSrc = 'img/profile_pic.jpeg';
+  const paragraphText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin cursus, tortor ut aliquam tincidunt, nunc elit pharetra massa, sit amet pharetra nisi purus et erat.";
+  const bulletListItems = ["-porsche 911", "-4hr sleep", "-isolation"];
+  const headingText = "Things i need most";
+  const headingText1 = "Akash Adarkar(21)";
+  const app = document.createElement('div');
+
+  const image = document.createElement('img');
+  image.src = imageSrc;
+  image.style.height = '380px';
+  image.style.width = '300px';
+  image.alt = 'Floating Image';
+  image.classList.add('float-left');
+  app.appendChild(image);
+
+  const heading1 = document.createElement('h3');
+    heading1.textContent = headingText1;
+    app.appendChild(heading1);
+    heading1.classList.add('my_name');
+
+
+
+  const paragraph = document.createElement('p');
+  paragraph.textContent = paragraphText;
+  paragraph.classList.add('typewriter');
+  app.appendChild(paragraph);
+
+
+  const heading = document.createElement('h3');
+    heading.textContent = headingText;
+    app.appendChild(heading);
+    heading.classList.add('skills');
+
+
+    const bulletList = document.createElement('ul');
+  bulletListItems.forEach((itemText) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = itemText;
+    listItem.classList.add('hobbies');
+    bulletList.appendChild(listItem);
+  });
+  app.appendChild(bulletList);
+
+  new WinBox({
+    title: 'About Me',
+    //background: '#000',
+    modal:true,
+    x: 'center',
+    y: 'center',
+    mount: app,
+    onfocus: function () {
+      this.setBackground('#00aa00');
+      const text = paragraph.textContent;
+      paragraph.textContent = '';
+
+      let charIndex = 0;
+      const delay = 50;
+
+      function typeWriter() {
+        if (charIndex < text.length) {
+          paragraph.textContent += text.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeWriter, delay);
         }
       }
-    });
-  }
-  
-  typeText();
-  
-  
+
+      typeWriter();
+    }
+  });
 })
 
 contact.addEventListener('click', () => {

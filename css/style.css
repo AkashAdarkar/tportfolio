@@ -220,3 +220,17 @@ button:hover{
   border-left:0px;
 
 }
+
+.float-left {
+  float: left;
+  margin-right: 20px;
+  margin-left:10px;
+  border:10px solid white;
+  box-shadow:  6px 6px #008F11;
+}
+.hobbies{
+    display:flex;
+    color:green;
+    /* justify-content:; */
+    align-items: center;
+}
