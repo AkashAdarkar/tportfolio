@@ -77,9 +77,9 @@ login.addEventListener('click',()=> {
 
 about.addEventListener('click', () => {
   const imageSrc = 'img/profile_pic.jpeg';
-  const paragraphText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin cursus, tortor ut aliquam tincidunt, nunc elit pharetra massa, sit amet pharetra nisi purus et erat.";
-  const bulletListItems = ["-porsche 911", "-4hr sleep", "-isolation"];
-  const headingText = "Things i need most";
+  const paragraphText =   "Hello world! I am AKASH ADARKAR ,a wannabe programmer. currently an engineering student pursuing computer science . I love to solve problems (its a lie) and  watching motorspots .";
+  const bulletListItems = ["-porsche 911", "-4hrs of sleep", "-isolation"];
+  const headingText = "Things I Need The Most:";
   const headingText1 = "Akash Adarkar(21)";
   const app = document.createElement('div');
 
@@ -125,6 +125,7 @@ about.addEventListener('click', () => {
     modal:true,
     x: 'center',
     y: 'center',
+    height:'600px',
     mount: app,
     onfocus: function () {
       this.setBackground('#00aa00');

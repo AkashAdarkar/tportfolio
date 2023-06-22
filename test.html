@@ -3,88 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image with Floating, Box Shadow, Typewriter Effect, Bullet List, and Google Maps in WinBox</title>
-  <script src="js/winbox.bundle.js"></script>
-  <script src="js/main.js"></script>
+  <title>Form Validation with Regex</title>
   <style>
-    
-
-    .float-left {
-      float: left;
-      margin-right: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    .error {
+      color: red;
     }
-
-    
   </style>
 </head>
 <body>
+  <form id="myForm">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" >
+    <span id="emailError" class="error"></span>
+    <br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" >
+    <span id="passwordError" class="error"></span>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+
   <script>
-    const imageSrc = 'img/profile_pic.jpeg';
-    const paragraphText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin cursus, tortor ut aliquam tincidunt, nunc elit pharetra massa, sit amet pharetra nisi purus et erat.";
-    const bulletListItems = ["List item 1", "List item 2", "List item 3"];
-    const headingText = "Heading Text";
-    const app = document.createElement('div');
+    const form = document.getElementById('myForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
 
-    const image = document.createElement('img');
-    image.src = imageSrc;
-    image.alt = 'Floating Image';
-    image.classList.add('float-left');
-    image.style.height = '380px';
-  image.style.width = '300px';
-    app.appendChild(image);
-
-    const paragraph = document.createElement('p');
-    paragraph.textContent = paragraphText;
-    paragraph.classList.add('typewriter');
-    app.appendChild(paragraph);
-
-    const heading = document.createElement('h3');
-    heading.textContent = headingText;
-    app.appendChild(heading);
-    heading.classList.add('skills')
-
-    
-
-    const bulletList = document.createElement('ul');
-    bulletListItems.forEach(item => {
-      const listItem = document.createElement('li');
-      listItem.textContent = item;
-      bulletList.appendChild(listItem);
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      validateForm();
     });
-    app.appendChild(bulletList);
 
-   
+    function validateForm() {
+      resetErrors();
 
-    new WinBox({
-      title: 'Image with Floating, Box Shadow, Typewriter Effect, Bullet List, and Google Maps',
-      background: '#000',
-      modal:true,
-      width: '800px',
-      height: '600px',
-      x: 'center',
-      y: 'center',
-      mount: app,
-      onfocus: function () {
-        const text = paragraph.textContent;
-        paragraph.textContent = '';
+      const emailValue = emailInput.value.trim();
+      const passwordValue = passwordInput.value.trim();
 
-        let charIndex = 0;
-        const delay = 50;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
-        function typeWriter() {
-          if (charIndex < text.length) {
-            paragraph.textContent += text.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeWriter, delay);
-          }
-        }
-
-        typeWriter();
+      if (!emailRegex.test(emailValue)) {
+        emailError.textContent = 'Invalid email format';
+        emailInput.classList.add('error');
       }
-    });
 
+      if (!passwordRegex.test(passwordValue)) {
+        passwordError.textContent = 'Invalid password format';
+        passwordInput.classList.add('error');
+      }
+    }
+
+    function resetErrors() {
+      emailError.textContent = '';
+      passwordError.textContent = '';
+
+      emailInput.classList.remove('error');
+      passwordInput.classList.remove('error');
+    }
   </script>
-
 </body>
 </html>

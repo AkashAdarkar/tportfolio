@@ -201,12 +201,17 @@ button:hover{
 
 
 #feedback{
+  
   padding:12px;
   color:#ccc;
   font-weight: bold;
   font-size: larger;
   margin-top:5px;
-  width:100%;
+  margin:auto;
+  width:80%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   background-color: #111;
   border:2px solid #ccc;
   
@@ -214,10 +219,9 @@ button:hover{
 
 }
 
-#feedback:active,#feedback::after{
-  border-bottom:0px; 
-  border-right:0px;
-  border-left:0px;
+#feedback:active,#feedback:focus{
+ outline:none;
+ border: 2px solid #008F11;
 
 }
 
@@ -233,4 +237,13 @@ button:hover{
     color:green;
     /* justify-content:; */
     align-items: center;
+}
+
+
+
+
+
+#email-name-container{
+  display: flex;
+  flex-direction: row;
 }
